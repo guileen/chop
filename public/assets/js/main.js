@@ -51,13 +51,22 @@
 	}
 
 
-	Chop.login=function(){
+	Chop.login=function(username, password){
 
-		$.post( '/api/login',
-		   {
-		      username : "fins",
-		      password : "123123"
-		   }
+		$.ajax( {
+				url : '/api/login',
+				type : 'post',
+				data : {
+			      username : username ,
+			      password : password
+			   	},
+				success: function(data, textStatus, jqXHR){
+
+				},
+				error: function(jqXHR, textStatus, errorThrown){
+
+				}
+			}
 		);
 	}
 

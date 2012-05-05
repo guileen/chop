@@ -1,10 +1,10 @@
 var connect = require('connect')
   , parseCookie = connect.utils.parseCookie
-  , Session = connect.middleware.session.Session;
+  , Session = connect.middleware.session.Session
+  , service = require('../lib');
 
 var exports = module.exports = function(app) {
   var io = require('socket.io').listen(app);
-  var service = require('../lib');
 
 
   io.set('authorization', function (data, accept) {
@@ -109,6 +109,7 @@ Handler.prototype = {
     channel.broadcast(['enter'], this.username);
     channel.sub(this.socket);
     this.channels.push(channel);
+    service.userAddToGroup(groupid, this.username)
   }
 
 , msg: function(data) {
@@ -117,6 +118,7 @@ Handler.prototype = {
   }
 
 , unsuball: function() {
+    // TODO leave
     var self = this;
     this.channels.forEach(function(channel) {
         channel.unsub(self);

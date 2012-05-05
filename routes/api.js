@@ -138,4 +138,8 @@ var exports = module.exports = function(app) {
       service.getGroupUsers(groupid, sendjson(res));
   });
 
+  app.get('/api/topic/history', requireLogin, function(req, res, next) {
+      //TODO
+  })
+
 }

@@ -36,37 +36,45 @@
 		});
 
 		var groupMainDom=$(".group-main")[0];
+		var groupTopicDom=$(".group-topic")[0];
 		var groupPanel=$(".group-panel");
 		var groupTool=$(".group-tool");
 
 		var showPanel=true;
+
+		function hidePanel(){
+			groupPanel.hide();
+			groupPanel.removeClass("group-aside-shadow");
+			groupTool.addClass("group-aside-shadow");
+
+			groupMainDom.style.paddingRight = "20px";
+			groupMainDom.style.marginRight="1px"
+			setTimeout(function(){
+				groupMainDom.style.marginRight="0px";
+			},0)
+			showPanel=false;
+		}
+		function displayPanel(){
+			groupPanel.show();
+			groupTool.removeClass("group-aside-shadow");
+			groupPanel.addClass("group-aside-shadow");
+
+			var height=groupMainDom.style.height;
+			groupMainDom.style.paddingRight = "200px";
+			groupMainDom.style.marginRight="1px"
+			setTimeout(function(){
+				groupMainDom.style.marginRight="0px";
+			},0)
+			showPanel=true;
+		}
+		hidePanel();
 		$("#trigger-button").on("click",function(e){
 			// alert(1)
 			if (showPanel){
+				hidePanel();
 
-				groupPanel.hide();
-				groupPanel.removeClass("group-aside-shadow");
-				groupTool.addClass("group-aside-shadow");
-
-				var width=groupMainDom.style.width;
-				groupMainDom.style.paddingRight = "20px";
-				groupMainDom.style.width="1000px";
-				setTimeout(function(){
-					groupMainDom.style.width=width;
-				},0)
-				showPanel=false;
 			}else{
-				groupPanel.show();
-				groupTool.removeClass("group-aside-shadow");
-				groupPanel.addClass("group-aside-shadow");
-
-				var width=groupMainDom.style.width;
-				groupMainDom.style.paddingRight = "200px";
-				groupMainDom.style.width="1000px";
-				setTimeout(function(){
-					groupMainDom.style.width=width;
-				},0)
-				showPanel=true;
+				displayPanel();
 			}
 
 		})

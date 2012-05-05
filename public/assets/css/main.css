@@ -40,45 +40,44 @@ body, div {
 .mainbody {
 	position: relative ;
 	min-width : 800px;
-	min-height: 500px;
+	min-height: 560px;
 	border : 1px solid red;
 
 }
 
 .group-main {
-	padding-right : 201px;
+	padding-right : 245px;
+	position: relative ;
+
 }
 .group-topic {
 	position: relative ;
 
 	width : 100%;
-	margin-right : 200px;
-	
+
 	overflow-x : scroll ;
 	overflow-y : hidden;
 
-
-
 }
 .group-panel {
+	width : 220px;
+	height : 530px;
 	position: absolute;
 	background-color : #F1F1F1 ;
 	right : 20px;
 	top :0px;
 	/*float : left ;*/
 	border : 0px solid red;
-	width : 180px;
-	height : 480px;
 }
 
 .group-tool {
+	width : 20px;
+	height : 530px;
 	position: absolute;
 	right : 0px;
 	top :0px;
 	border : 0px solid red;
 	background-color : #F1F1F1;
-	width : 20px;
-	height : 480px;
 }
 
 .group-aside-shadow {
@@ -87,16 +86,15 @@ body, div {
 
 .group-topic-inner {
 	white-space:nowrap;
-	width : 2000px;
-
-
+	width : 2200px;
 }
 
 .group-topic .topic {
 	/*display: inline-block ;*/
 	float : left ;
-	border : 1px solid blue ;
-	width : 350px;
+	border : 1px solid #cccccc ;
+	border-radius : 3px;
+	width : 310px;
 	margin : 10px;
 	white-space:normal;
 	word-break:break-all;
@@ -112,8 +110,8 @@ body, div {
 .group-topic .topic .topic-body{
 
 	overflow-x : auto; 
-	overflow-y : scroll; 
-	height : 350px;
+	overflow-y : auto; 
+	height : 410px;
 	padding:2px;
 }
 
@@ -138,7 +136,7 @@ body, div {
 
 .msgbox textarea {
 	height : 39px;
-	width : 280px;
+	width : 240px;
 	/*border : 1px solid #dddddd;*/
 	resize : none;
 }

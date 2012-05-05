@@ -98,7 +98,7 @@
 	    })
 
 	    $('a.createtopic').click(function(){
-	        Chop.showCreateTopic();
+	       $("#create-topic-box").show();
 	    })
 
 	    $('#create-topic').click(function(){
@@ -107,6 +107,10 @@
 	    	var groupid=$("#current-groupid").val();
 	    	Chop.createTopics(title, groupid)
 	    })
+
+	    $('#cancel-topic-box').click(function(){
+	    	$("#create-topic-box").hide();
+	    });
 
 		groupTopic=$('.group-topic');
 	}
@@ -140,9 +144,6 @@
 
   }
 
-  Chop.showCreateTopic = function(groupid) {
-  	$("#create-topic-box").show();
-  }
 
   Chop.showNewGroup = function(group) {
     var $group = Chop.parseTemplate('group', group);

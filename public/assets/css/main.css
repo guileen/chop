@@ -40,6 +40,28 @@ footer {
 
 }
 
+.group-icon {
+	float : left;
+	padding : 5px;
+	text-align : center;
+	margin : 10px;
+	width : 200px;
+	height : 200px;
+	border : 1px solid #cccccc;
+	border-radius : 4px;
+	background-image: -webkit-linear-gradient(top, #ffffff, #dddddd);
+
+
+}
+.group-icon:hover {
+		-webkit-box-shadow:inset 0px 0px 4px #333333;
+
+}
+.group-icon img {
+	position: relative;
+	bottom : 0px;
+	min-height : 128px;
+}
 
 .mainbody {
 	position: relative ;

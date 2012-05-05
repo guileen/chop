@@ -34,6 +34,12 @@ var exports = module.exports = function(app) {
       res.render('login', {})
   })
 
+  app.get('/logout', function(req, res, next) {
+      req.session.destroy(function(){
+          res.redirect('/');
+      })
+  })
+
   app.post('/login', function(req, res, next) {
       service.checkUserAuth(req.body.username, req.body.password, function(err, ok) {
           if(err) {return next(err);}

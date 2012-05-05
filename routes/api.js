@@ -63,6 +63,8 @@ var exports = module.exports = function(app) {
 
   app.post('/api/sendmsg', requireLogin, function(req, res, next) {
       var message = req.body;
+      // TODO markdown
+      console.log(message);
       service.newMessage(message, myconsole.ifError);
       chop.getTopicChannel(message.topicid).broadcast(message);
   })

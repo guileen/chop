@@ -216,7 +216,9 @@
 	};
 
 	Chop.sendMsg=function(text,topicid){
-
+    if(topicid == null) {
+      throw new Error('topicid is ' + topicid);
+    }
 		$.ajax( 
 			{
 				url : '/api/sendmsg',
@@ -226,6 +228,7 @@
 			      text : text
 			   	},
 				success: function(data, textStatus, jqXHR){
+          console.log(data)
 					Chop.clearMsg();
 				},
 				error: function(jqXHR, textStatus, errorThrown){

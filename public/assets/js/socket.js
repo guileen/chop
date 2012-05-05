@@ -23,8 +23,14 @@
   var listeners = {
 
     msg: function(data) {
-      console.log('msg:');
       console.log(data);
+
+      var topicid=data.topicid;
+      var domId="#topic-"+topicid;
+      if ($(domId)[0]){
+           var message= Chop.parseTemplate("message", data,$(domId+" .topic-body"));
+      }
+
     }
 
     // newtopic

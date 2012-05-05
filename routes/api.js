@@ -25,8 +25,22 @@ var exports = module.exports = function(app) {
     }
   }
 
+  function requireLogin(req, res, next) {
+    // --- for test
+    if(req.query.test_user) {
+      req.session.username = req.query.test_user;
+      return next();
+    }
+    // --- end test
+    if(!req.session.username) {
+      return next(new Error('require login'));
+    }
 
-  app.get('/api/login', function(req, res, next) {
+    next();
+  }
+
+
+  app.post('/api/login', function(req, res, next) {
       var username = req.body.username
         , password = req.body.password
         ;
@@ -41,7 +55,7 @@ var exports = module.exports = function(app) {
       });
   });
 
-  app.post('/api/sendmsg', function(req, res, next) {
+  app.post('/api/sendmsg', requireLogin, function(req, res, next) {
       // TODO
   })
 
@@ -61,37 +75,37 @@ var exports = module.exports = function(app) {
       })
   })
 
-  app.post('/api/group/create', function(req, res, next) {
+  app.post('/api/group/create', requireLogin, function(req, res, next) {
       var group = req.body;
       service.createGroup(group, sendjson(res, 403));
   })
 
-  app.post('/api/group/update', function(req, res, next) {
+  app.post('/api/group/update', requireLogin, function(req, res, next) {
       // TODO
   })
 
-  app.post('/api/group/remove', function(req, res, next) {
+  app.post('/api/group/remove', requireLogin, function(req, res, next) {
       // TODO
   })
 
-  app.post('/api/group/hot_topics', function(req, res, next) {
+  app.post('/api/group/hot_topics', requireLogin, function(req, res, next) {
       var groupid = req.body.groupid;
       service.getHotTopics(groupid, sendjson(res))
   })
 
-  app.post('/api/group/my_topics', function(req, res, next) {
+  app.post('/api/group/my_topics', requireLogin, function(req, res, next) {
       
   })
 
-  app.post('/api/group/joined_topics', function(req, res, next) {
+  app.post('/api/group/joined_topics', requireLogin, function(req, res, next) {
       
   })
 
-  app.post('/api/group/timeline', function(req, res, next) {
+  app.post('/api/group/timeline', requireLogin, function(req, res, next) {
 
   })
 
-  app.post('/api/group/users', function(req, res, next) {
+  app.post('/api/group/users', requireLogin, function(req, res, next) {
       var groupid = req.body.groupid;
       service.getGroupUsers(groupid, sendjson(res));
   });

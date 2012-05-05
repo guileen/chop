@@ -30,3 +30,10 @@ img.fullwidth {
   display: block;
   min-height: 300px;
 }
+.big-logo img {
+  margin: 50px 20px;
+}
+.login-row {
+  min-height: 400px;
+  padding-top: 50px;
+}

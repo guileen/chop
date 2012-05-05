@@ -182,6 +182,7 @@
     $('.mainbody').show();
     Chop.io.enter(id);
     Chop.getHotTopics(id);
+    Chop.getGroupUsers(id);
     $('#current-groupid').val(id);
   }
 

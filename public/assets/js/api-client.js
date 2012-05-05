@@ -207,7 +207,7 @@
 			      groupid : groupid
 			   	},
 				success: function(data, textStatus, jqXHR){
-					
+					console.log(data)
 				},
 				error: function(jqXHR, textStatus, errorThrown){
 

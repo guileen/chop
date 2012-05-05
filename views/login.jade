@@ -2,9 +2,11 @@ extends layout
 
 block content
 
-  .row
+  .row.login-row
     .span6
       h1 Welcome to Chop
+      div.big-logo
+        img(src='/assets/img/logo.png')
     .span5
       form#login-box.form-horizontal(method='post', action='/login')
         if(locals.message1)

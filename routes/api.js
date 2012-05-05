@@ -115,6 +115,7 @@ var exports = module.exports = function(app) {
 
   app.post('/api/group/newtopic', requireLogin, function(req, res, next) {
       var topic = req.body;
+      topic.creater = req.session.username;
       service.createTopic(topic, sendjson(res, 403));
   })
 

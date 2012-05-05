@@ -63,6 +63,15 @@ var exports = module.exports = function(app) {
       })
   })
 
+  app.post('/group/create', requireLogin, function(req, res, next) {
+      var group = req.body;
+      group.owner = req.session.username;
+      service.createGroup(group, function(err, data) {
+          if(err) {return next(err);}
+          res.redirect('/');
+      })
+  })
+
   app.post('/upload', function(req, res, next) {
       var user = req.session.username
         , user_images = user + ':images'

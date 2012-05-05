@@ -125,7 +125,11 @@
 			      groupid : groupid
 			   	},
 				success: function(data, textStatus, jqXHR){
-					
+          var topics = data.data;
+          // TODO only top 4 topics
+          topics.forEach(function(topic){
+              Chop.showNewTopic(topic);
+          })
 				},
 				error: function(jqXHR, textStatus, errorThrown){
 

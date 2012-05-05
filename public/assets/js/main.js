@@ -7,6 +7,7 @@
     // update profile
     Chop.profile();
 
+    Chop.getHomeGroups();
     Chop.showHome();
 
 		Chop.msgbox=$(".msgbox textarea")[0];
@@ -92,6 +93,14 @@
         Chop.showCreateGroup();
     })
 
+    $('a.gotohome').click(function(){
+        Chop.showHome();
+    })
+
+    $('a.createtopic').click(function(){
+        Chop.showCreateTopic();
+    })
+
 		groupTopic=$('.group-topic');
 	}
 
@@ -125,7 +134,11 @@
   }
 
   Chop.showNewGroup = function(group) {
-    Chop.parseTemplate('group', group, $('.homebody'));
+    var $group = Chop.parseTemplate('group', group);
+    $('.homebody').append($group);
+    $group.click(function(){
+        Chop.enterGroup(group.name);
+    })
   }
 
   function hideAll() {
@@ -137,7 +150,6 @@
   Chop.showHome = function() {
     hideAll();
     $('.homebody').show();
-    Chop.getHomeGroups();
   }
 
   Chop.showCreateGroup = function() {
@@ -145,10 +157,12 @@
     $('.creategroupbody').show();
   }
 
-  Chop.enterGroup = function() {
+  Chop.enterGroup = function(id) {
     hideAll();
     // TODO load group
     $('.mainbody').show();
+    Chop.io.enter(id);
+    Chop.getHotTopics(id);
   }
 
   Chop.leaveGroup = function() {

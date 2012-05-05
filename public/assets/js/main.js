@@ -129,6 +129,7 @@
 		$(Chop.sendbox).css({
 			left : (pos.left+scrollLeft)+"px"
 		})
+		$(".sendbox textarea").focus();
 	}
 
 

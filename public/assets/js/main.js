@@ -133,6 +133,10 @@
 
   }
 
+  Chop.showCreateTopic = function(groupid) {
+
+  }
+
   Chop.showNewGroup = function(group) {
     var $group = Chop.parseTemplate('group', group);
     $('.homebody').append($group);
@@ -144,7 +148,7 @@
   function hideAll() {
     $('.homebody').hide();
     $('.mainbody').hide();
-    $('.creategroupbody').hide();
+    $('.create-group-body').hide();
   }
 
   Chop.showHome = function() {
@@ -154,7 +158,7 @@
 
   Chop.showCreateGroup = function() {
     hideAll();
-    $('.creategroupbody').show();
+    $('.create-group-body').show();
   }
 
   Chop.enterGroup = function(id) {

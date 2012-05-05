@@ -83,20 +83,20 @@ Handler.prototype = {
 
   sub: function(topicid) {
     var channel = getTopicChannel(topicid);
-    channel.sub(this);
+    channel.sub(this.socket);
     this.channels.push(channel);
   }
 
 , unsub: function(topicid) {
     getTopicChannel(topicid)
-    channel.unsub(this);
+    channel.unsub(this.socket);
     removeFromArr(this.channels, channel);
   }
 
 , leave: function(groupid) {
     var channel = getGroupChannel(groupid);
     channel.broadcast(['leave', this.username]);
-    channel.unsub(this);
+    channel.unsub(this.socket);
     removeFromArr(this.channels, channel);
 
     // FIXME remove only channels of current group
@@ -106,7 +106,7 @@ Handler.prototype = {
 , enter: function(groupid) {
     var channel = getGroupChannel(groupid);
     channel.broadcast(['enter'], this.username);
-    channel.sub(this);
+    channel.sub(this.socket);
     this.channels.push(channel);
   }
 

@@ -2,6 +2,8 @@
 ;(function(scope){
 	var Chop=scope.Chop=scope.Chop||{};
 
+	var currentTopic=null;
+
 	Chop.init = function(){
 
     // update profile
@@ -12,6 +14,8 @@
 
 		Chop.msgbox=$(".msgbox textarea")[0];
 		Chop.sendbox=$(".sendbox")[0];
+		$(".sendbox").hide();
+		currentTopic=null;
 
 		var ts=mock.topic.reverse();
 		ts.forEach( function(t){
@@ -36,13 +40,13 @@
 		$(".msgbox textarea").on("keypress", function(e){
 			if (!e.ctrlKey && e.keyCode==13){
 				e.preventDefault();
-				Chop.sendMsg( Chop.msgbox.value);
+				Chop.sendMsg( Chop.msgbox.value, currentTopic);
 			}
 		});
 
 
 		$(".sendbutton button").on("click", function(e){
-			Chop.sendMsg( Chop.msgbox.value );
+			Chop.sendMsg( Chop.msgbox.value, currentTopic );
 		});
 
 		var groupMainDom=$(".group-main")[0];
@@ -120,8 +124,8 @@
 		var topic=$('#'+topicid);
 		var pos=topic.position();
 		var scrollLeft=groupTopic.scrollLeft();
-
-		console.log(scrollLeft)
+		$(".sendbox").show();
+		currentTopic=topicid.substring(6);
 		$(Chop.sendbox).css({
 			left : (pos.left+scrollLeft)+"px"
 		})

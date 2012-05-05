@@ -149,6 +149,7 @@
 			   	},
 				success: function(data, textStatus, jqXHR){
 					Chop.showNewTopic(data.data);
+					$("#create-topic-box").hide();
 				},
 				error: function(jqXHR, textStatus, errorThrown){
 

@@ -51,49 +51,6 @@
 	}
 
 
-	Chop.login=function(username, password){
-
-		$.ajax( {
-				url : '/api/login',
-				type : 'post',
-				data : {
-			      username : username ,
-			      password : password
-			   	},
-				success: function(data, textStatus, jqXHR){
-
-				},
-				error: function(jqXHR, textStatus, errorThrown){
-
-				}
-			}
-		);
-	}
-
-	Chop.signup=function(){
-		
-	}
-
-	Chop.checkUsername=function(){
-		
-	}
-
-	Chop.createGroup=function(){
-		
-	}
-
-	Chop.removeGroup=function(){
-		
-	}
-
-	Chop.sendMsg=function(msg){
-
-		alert(msg);
-
-		Chop.clearMsg();
-
-	}
-
 
 	Chop.clearMsg=function(msg){
 

@@ -1,157 +1,70 @@
-var appko = appko || {};
-(function(){
 
-    // simple template
-    function render(html, ctx) {
-      for(var name in ctx) {
-        var re = new RegExp('{' + name + '}', 'g');
-        html = html.replace(re, ctx[name]);
-      }
-      return html;
-    }
+;(function(scope){
+	var Chop=scope.Chop=scope.Chop||{};
 
-    function joinImageId(images, exclude) {
-      return images.filter(function(i) {
-          return i != exclude;
-      }).map(function(i) {
-          return i.id;
-      }).join('--');
-    }
+	Chop.init = function(){
+		Chop.msgbox=$(".msgbox textarea")[0];
+		Chop.sendbox=$(".sendbox")[0];
 
-    var html_pk_image = $('#pk-image').html()
-      , html_tb_image = $('#tb-image').html()
-      , pkImages
-      , hotImages;
+		Chop.parseTemplate("topic", mock.topic, "#group-body");
 
-    $.get('/api/pkimages', function(data) {
-        pkImages = data.pkImages
-        hotImages = data.hotImages
-        if(data.foundPair) {
-          async.forEach(pkImages, loadPkImage, function(err){
-              loadHotImages(hotImages);
-          })
-        }
+		mock.message.forEach( function(m){
+			Chop.parseTemplate("message", m, "#topic-"+m.topicid+" .topic-body");
+		});
 
-    })
 
-    function loadHotImages(images, callback) {
+		$(".group-topic-inner").on("click", function(e){
+			
+			var target=e.target;
+			if (target.className=="topic-footer"){
+				var id=target.parentNode.id;
+				Chop.activeBox(id);
+			}
+		});
 
-        var $inspos = $('i.insert-pos')
-        var $winspos = $('i.winsert-pos')
 
-        async.forEachLimit(images, 4, function(image, _callback) {
-            var html = render(html_tb_image, image)
-            var $tb_html = $(html);
-            var $img = $tb_html.find('img');
-            $img.attr('src', image.tbUrl || ('/' + image.id + '/thumbnail')).load(function(){
-                var $pos = (image.tbWidth > 130 && image.width > image.height) ? $winspos : $inspos;
-                var minpos = $pos[0]
-                $pos.each(function(){
-                    if($(this).offset().top < $(minpos).offset().top) {
-                      minpos = this
-                    }
-                })
+		$(".msgbox textarea").on("keypress", function(e){
+			if (e.keyCode==13){
+				e.preventDefault();
+				Chop.sendMsg( Chop.msgbox.value);
+			}
+		});
 
-                $tb_html.insertBefore(minpos);
-                $tb_html.bind('click', function(){
-                    appko.popoverImage(image);
-                })
-                _callback();
-            })
 
-        }, callback)
-    }
+		$(".sendbutton button").on("click", function(e){
+			Chop.sendMsg( Chop.msgbox.value );
+		});
 
-    var imgpk_pos = 0;
-    function loadPkImage(image, callback) {
+		groupTopic=$('.group-topic');
+	}
 
-      image.others = joinImageId(pkImages, image);
-      var $pkImage = $(render(html_pk_image, image));
-      var $img = $pkImage.find('img');
-      var url = $img.data('url');
+	var groupTopic;
+	Chop.activeBox=function(topicid){
+		var topic=$('#'+topicid);
+		var pos=topic.position();
+		var scrollLeft=groupTopic.scrollLeft();
 
-      function load() {
-        $img.unbind('load', load);
+		console.log(scrollLeft)
+		$(Chop.sendbox).css({
+			left : (pos.left+scrollLeft)+"px"
+		})
+	}
 
-        var $imgpk_pos = '.imgpk-pos-' + imgpk_pos % 2;
-        $pkImage.insertBefore($('.imgpk-pos-' + imgpk_pos % 2));
-        imgpk_pos ++;
-        t=null;
-        callback()
+	Chop.sendMsg=function(msg){
 
-        var t = new Image();
-        t.src = $img.data('url');
-        if(t.width < 300 || t.height < 300) {
-          // != real width real height
-          reloadPkImage($img);
-        }
-      }
+		alert(msg);
 
-      function error(err) {
-          $img.unbind('error')
-          reloadPkImage($img, callback);
-      }
+		Chop.clearMsg();
 
-      $img.attr('src', url).bind('load', load);
-      $img.bind('error', error);
-    }
+	}
 
-    function reloadPkImage($img, callback) {
-      console.log('reload:' + $img.data('url'))
-      var newsrc = $img.data('newurl') || ( '/' + $img.data('id') + '/reload');
-      $img.attr('src', newsrc)
-      .error(function(){
-          $img.unbind('load error')
-          removeImage($img);
-      }).load(function(event){
-          callback()
-      })
-    }
 
-    function removeImage($img) {
-      location.href = '/' + $img.data('id') + '/remove';
-    }
+	Chop.clearMsg=function(msg){
 
-    function initTriggers() {
-      var $upload = $('#upload');
-      var $username = $('#username');
+		Chop.msgbox.value="";
+		
+	}
 
-      $upload.popover({
-          trigger: 'manual'
-        , html: true
-        , placement: 'bottom'
-        , content: function() {
-            return $('#upload-content').html();
-          }
-      });
 
-      $username.popover({
-          trigger: 'manual'
-        , html: true
-        , placement: 'bottom'
-        , content: function() {
-            return $('#switch-user').html()
-          }
-      });
 
-      $upload.live('click', function() {
-          $upload.popover('show');
-          $('.close-popover').click(function() {
-              $upload.popover('hide');
-          })
-      });
-
-      $username.live('click', function() {
-          $username.popover('show');
-          $('.close-popover').click(function() {
-              $username.popover('hide');
-          })
-      });
-
-    }
-
-    // main
-    initTriggers();
-    // loadPkImages();
-
-})();
+}(this));

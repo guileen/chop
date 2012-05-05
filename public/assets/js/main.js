@@ -50,13 +50,6 @@
 		})
 	}
 
-	Chop.sendMsg=function(msg){
-
-		alert(msg);
-
-		Chop.clearMsg();
-
-	}
 
 
 	Chop.clearMsg=function(msg){
@@ -67,4 +60,10 @@
 
 
 
+
+
+
 }(this));
+
+
+

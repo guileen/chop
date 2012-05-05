@@ -6,7 +6,6 @@
 var config = require('./config')
   , redis = require('redis')
   , fs = require('fs')
-  , request = require('request')
   , path = require('path')
   , resolve = path.resolve
   ;
@@ -19,10 +18,6 @@ fs.mkdir(config.tmpUploadFolder)
 fs.mkdir(config.uploadFolder)
 
 config.redisClient = redis.createClient(config.redis.port, config.redis.host)
-
-request.defaults({
-    timeout: config.botTimeout
-})
 
 var express = require('express')
   , util = require('util')

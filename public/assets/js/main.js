@@ -12,8 +12,8 @@
     Chop.getHomeGroups();
     Chop.showHome();
 
-		Chop.msgbox=$(".msgbox textarea")[0];
-		Chop.sendbox=$(".sendbox")[0];
+		Chop.msgbox=$(".msgbox textarea");
+		Chop.sendbox=$(".sendbox");
 		$(".sendbox").hide();
 		currentTopic=null;
 
@@ -40,13 +40,13 @@
 		$(".msgbox textarea").on("keypress", function(e){
 			if (!e.ctrlKey && e.keyCode==13){
 				e.preventDefault();
-				Chop.sendMsg( Chop.msgbox.value, currentTopic);
+				Chop.sendMsg( Chop.msgbox.val(), currentTopic);
 			}
 		});
 
 
 		$(".sendbutton button").on("click", function(e){
-			Chop.sendMsg( Chop.msgbox.value, currentTopic );
+			Chop.sendMsg( Chop.msgbox.val(), currentTopic );
 		});
 
 		var groupMainDom=$(".group-main")[0];
@@ -126,7 +126,7 @@
 		var scrollLeft=groupTopic.scrollLeft();
 		$(".sendbox").show();
 		currentTopic=topicid.substring(6);
-		$(Chop.sendbox).css({
+		Chop.sendbox.css({
 			left : (pos.left+scrollLeft)+"px"
 		})
 		$(".sendbox textarea").focus();
@@ -136,7 +136,7 @@
 
 	Chop.clearMsg=function(msg){
 
-		Chop.msgbox.value="";
+		Chop.msgbox.val("");
 		
 	}
 

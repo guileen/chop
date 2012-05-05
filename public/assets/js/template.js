@@ -30,10 +30,11 @@
 			]).join(""),
 
 		group : ([
-				'<a class="group group-${name}" href="javascript:void(0)">	\
-          <img src="${logo}"> \
-					<div class="text">${name}</div>	\
-				</a>'
+			'<div  class="group-icon" name="${name}">	\
+          			<img src="${logo}" width="128" height="128"> \
+					<div class="text"><a href="javascript:void(0)">${name}</a></div>	\
+			</div>'
+
 			]).join(""),
 
 

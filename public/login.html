@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+
+    <title>Chat room</title>
+    <link rel="stylesheet" href="/bootstrap/docs/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a href="/" class="brand">ChopChat</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/groups">Groups</a></li>
+            </ul>
+            <div class="navbar-text pull-right user-actions"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span7">
+          <h1>Welcome to Chop</h1>
+        </div>
+        <div class="span5">
+          <form class="form-horizontal">
+            <fieldset>
+              <legend>Login</legend>
+              <div class="control-group">
+                <label for="username" class="control-label">Username</label>
+                <div class="controls">
+                  <input type="text" name="username"/>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="password" class="control-label">Password</label>
+                <div class="controls">
+                  <input type="password" name="password"/>
+                </div>
+              </div>
+            </fieldset>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button class="btn">Cancel</button>
+            </div>
+          </form>
+          <form class="form-horizontal">
+            <fieldset>
+              <legend>Sign up</legend>
+              <div class="control-group">
+                <label for="username" class="control-label">Username</label>
+                <div class="controls">
+                  <input type="text" name="username"/>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="password" class="control-label">Password</label>
+                <div class="controls">
+                  <input type="password" name="password"/>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="password" class="control-label">Repeat Password</label>
+                <div class="controls">
+                  <input type="password" name="repeat-password"/>
+                </div>
+              </div>
+            </fieldset>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Sign up</button>
+              <button class="btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/js/async.min.js"></script>
+    <script src="/assets/js/jquery-1.7.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="/bootstrap/js/bootstrap-modal.js"></script>
+    <script id="upload-content" type="template">
+      <form action="/upload" method="post" class="form-inline">
+        <input name="imageurl" placeholder="http://"/>
+        <button type="submit" class="btn btn-primary">+</button>
+      </form><a class="btn btn-danger close-popover">close</a>
+    </script>
+    <script id="switch-user" type="template">
+      <form method="post" action="/login" class="form-inline">
+        <input name="username" class="input-small"/>
+        <button type="submit" class="btn">switch user</button>
+      </form><a class="btn btn-danger close-popover">close</a>
+    </script>
+  </body>
+</html>

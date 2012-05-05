@@ -1,0 +1,147 @@
+
+body {
+	padding : 0px;
+	border : 0px;
+	margin : 0px;
+}
+
+header {
+	background-color : black;
+	color : white ;
+	padding : 5px;
+}
+
+header a{
+	background-color : black;
+	color : white ;
+	text-decoration: none;
+}
+
+header .small-logo {
+	display: inline;
+}
+header nav {
+	float : right;
+	text-align : right;
+}
+header .userid {
+	/*float : right ;*/
+}
+
+footer {
+	text-align : center;
+}
+
+.mainbody {
+	position: relative ;
+	min-width : 800px;
+	min-height: 500px;
+	border : 1px solid red;
+
+}
+
+.group-topic {
+	position: relative ;
+	width : 100%;
+	qmin-height : 500px;
+	
+	overflow-x : scroll ;
+	overflow-y : hidden;
+
+}
+.group-topic-inner {
+	white-space:nowrap;
+	width : 2000px;
+}
+
+.group-topic .topic {
+	/*display: inline-block ;*/
+	float : left ;
+	border : 1px solid blue ;
+	width : 350px;
+	margin : 10px;
+	white-space:normal;
+	word-break:break-all;
+	word-wrap:break-word;
+	overflow : hidden ;
+}
+
+.group-topic .topic .topic-header{
+
+	height : 20px;
+	border-bottom : 1px solid red;
+}
+.group-topic .topic .topic-body{
+
+	overflow-x : auto; 
+	overflow-y : scroll; 
+	height : 350px;
+	padding:2px;
+}
+
+.group-topic .topic .topic-footer{
+	border-top : 1px solid #999;
+	background-color : #eee;
+	height : 55px;
+}
+
+
+.sendbox {
+	top : 390px;
+	position: absolute;
+	margin-left : 12px;
+	height : 50px;
+}
+
+
+.sendbox div {
+	float : left;
+}
+
+.msgbox textarea {
+	height : 42px;
+	width : 185px;
+}
+}
+
+.sendbutton button {
+	height : 42px;
+}
+
+
+
+.group-bar {
+	position: absolute;
+	display : block;
+	z-index : 99;
+	width : 100%;
+	left : 0px;
+	bottom : 0px;
+	height : 30px;
+	background-color : #ffe0d6;
+}
+
+.topic .message {
+		white-space:normal;
+		word-wrap:break-word;
+		word-break:break-all;
+}
+
+.topic .message:nth-child(even) {
+	background-color : #eeeeee ;
+}
+
+.topic .message .sender {
+	
+}
+.topic .message .sendtime {
+	float : right;
+	text-align : right ;
+
+
+}
+.topic .message .text {
+	clear : both;
+	
+}
+

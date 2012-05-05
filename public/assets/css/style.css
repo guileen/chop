@@ -1,0 +1,32 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+img {
+  max-width: 100%;
+}
+a.tb-small {
+  margin: 5px 0;
+  display: block;
+}
+a.tb-small img {
+  width: 100%;
+}
+img.fullwidth {
+  width: 100%;
+}
+.thumbnail-small {
+  max-width: 128px;
+  max-height: 128px;
+  display: inline-block;
+}
+.inline {
+  display: inline-block;
+}
+.ko-stage {
+  display: block;
+  min-height: 300px;
+}

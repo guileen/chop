@@ -96,6 +96,10 @@ var exports = module.exports = function(app) {
       // TODO
   })
 
+  app.get('/api/homegroups', requireLogin, function(req, res, next) {
+      service.getHomeGroups(req.session.username, sendjson(res));
+  });
+
   app.post('/api/group/hottopics', requireLogin, function(req, res, next) {
       var groupid = req.body.groupid;
       service.getHotTopics(groupid, sendjson(res))

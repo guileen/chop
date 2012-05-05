@@ -7,6 +7,8 @@
     // update profile
     Chop.profile();
 
+    Chop.showHome();
+
 		Chop.msgbox=$(".msgbox textarea")[0];
 		Chop.sendbox=$(".sendbox")[0];
 
@@ -86,6 +88,10 @@
 
 		})
 
+    $('a.creategroup').click(function(){
+        Chop.showCreateGroup();
+    })
+
 		groupTopic=$('.group-topic');
 	}
 
@@ -116,11 +122,38 @@
 		var gbody=$("#group-body")[0];
 		gbody.insertBefore( topic, gbody.firstChild );
 
-	}
+  }
 
+  Chop.showNewGroup = function(group) {
+    Chop.parseTemplate('group', group, $('.homebody'));
+  }
 
+  function hideAll() {
+    $('.homebody').hide();
+    $('.mainbody').hide();
+    $('.creategroupbody').hide();
+  }
 
+  Chop.showHome = function() {
+    hideAll();
+    $('.homebody').show();
+    Chop.getHomeGroups();
+  }
 
+  Chop.showCreateGroup = function() {
+    hideAll();
+    $('.creategroupbody').show();
+  }
+
+  Chop.enterGroup = function() {
+    hideAll();
+    // TODO load group
+    $('.mainbody').show();
+  }
+
+  Chop.leaveGroup = function() {
+
+  }
 
 }(this));
 

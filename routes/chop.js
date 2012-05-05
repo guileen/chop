@@ -2,7 +2,7 @@ var connect = require('connect')
   , parseCookie = connect.utils.parseCookie
   , Session = connect.middleware.session.Session;
 
-module.exports = function(app) {
+var exports = module.exports = function(app) {
   var io = require('socket.io').listen(app);
   var service = require('../lib');
 

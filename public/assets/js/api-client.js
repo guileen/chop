@@ -100,6 +100,21 @@
 		
 	}
 
+  Chop.getHomeGroups = function() {
+    $.ajax({
+        url: '/api/homegroups',
+        type: 'get',
+        success: function(data, textStatus, jqXHR) {
+          data.data.forEach(function(group){
+              Chop.showNewGroup(group);
+          })
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+
+        }
+    })
+  }
+
 	Chop.getHotTopics=function(groupid){
 
 		$.ajax( 

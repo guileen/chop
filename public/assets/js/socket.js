@@ -10,9 +10,11 @@
     });
   }
 
+  Chop.io = {}
+
   // send command
   ;['sub', 'unsub', 'leave', 'enter', 'msg'].forEach(function(cmd) {
-      Chop[cmd] = function(data) {
+      Chop.io[cmd] = function(data) {
         socket.emit('message', [cmd, data]);
       }
   });

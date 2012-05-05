@@ -1,0 +1,57 @@
+!!!
+html
+  head
+    title= title
+    if(debug)
+      link(rel='stylesheet', href='/bootstrap/docs/assets/css/bootstrap.css')
+    else
+      link(rel='stylesheet', href='http://twitter.github.com/bootstrap/assets/css/bootstrap.css')
+    link(rel='stylesheet', href='/font-awesome/css/font-awesome.css')
+    link(rel='stylesheet', href='/assets/css/style.css')
+  body
+
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='/') GeekChat
+          .nav-collapse
+            ul.nav
+              li(class= pageid == 'index' && 'active'): a(href='/') Home
+              li(class= pageid == 'pop' && 'active'): a(href='/groups') Groups
+            //- user-actions
+            .navbar-text.pull-right.user-actions
+
+
+    .container
+
+      block content
+
+    script(src='/assets/js/async.min.js')
+    if(debug)
+      script(src='/assets/js/jquery-1.7.1.min.js')
+      script(src='/bootstrap/js/bootstrap-tooltip.js')
+      script(src='/bootstrap/js/bootstrap-popover.js')
+      script(src='/bootstrap/js/bootstrap-modal.js')
+    else
+      script(src='http://code.jquery.com/jquery-1.7.2.min.js')
+      script(src='http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js')
+      script(src='http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js')
+      script(src='http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js')
+
+    script#upload-content(type="template")
+      form(action='/upload', method='post').form-inline
+        input(name="imageurl", placeholder="http://")
+        button.btn.btn-primary(type='submit') +
+      a.btn.btn-danger.close-popover close
+
+    script#switch-user(type="template")
+      form(method='post', action='/login').form-inline
+        input.input-small(name='username', placeholder=username)
+        button.btn(type='submit') switch user
+      a.btn.btn-danger.close-popover close
+
+    block scripts

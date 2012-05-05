@@ -89,17 +89,24 @@
 
 		})
 
-    $('a.creategroup').click(function(){
-        Chop.showCreateGroup();
-    })
+	    $('a.creategroup').click(function(){
+	        Chop.showCreateGroup();
+	    })
 
-    $('a.gotohome').click(function(){
-        Chop.showHome();
-    })
+	    $('a.gotohome').click(function(){
+	        Chop.showHome();
+	    })
 
-    $('a.createtopic').click(function(){
-        Chop.showCreateTopic();
-    })
+	    $('a.createtopic').click(function(){
+	        Chop.showCreateTopic();
+	    })
+
+	    $('#create-topic').click(function(){
+
+	    	var title=$("#topic-title").val();
+	    	var groupid=$("#current-groupid").val();
+	    	Chop.createTopics(title, groupid)
+	    })
 
 		groupTopic=$('.group-topic');
 	}
@@ -134,7 +141,7 @@
   }
 
   Chop.showCreateTopic = function(groupid) {
-
+  	$("#create-topic-box").show();
   }
 
   Chop.showNewGroup = function(group) {
@@ -167,6 +174,7 @@
     $('.mainbody').show();
     Chop.io.enter(id);
     Chop.getHotTopics(id);
+    $('#current-groupid').val(id);
   }
 
   Chop.leaveGroup = function() {

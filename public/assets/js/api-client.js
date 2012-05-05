@@ -138,6 +138,26 @@
 		);		
 	};
 
+	Chop.createTopics=function(title,groupid){
+		alert([title,groupid])
+		$.ajax( 
+			{
+				url : '/api/group/newtopic',
+				type : 'post',
+				data : {
+			      title : title,
+			      groupid : groupid
+			   	},
+				success: function(data, textStatus, jqXHR){
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown){
+
+				}
+			}
+		);		
+	};
+
 	Chop.getJoinedTopics=function(){
 
 		$.ajax( 

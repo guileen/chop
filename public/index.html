@@ -59,8 +59,11 @@ window.addEventListener("load" , function(){
   <a href="#">设置</a>
 </nav>
 </header>
+
 <div class="homebody">
+
 </div>
+
 <div class="create-group-body">
   <form class="form-horizontal" method="POST" action="/group/create">
     <fieldset>
@@ -83,7 +86,28 @@ window.addEventListener("load" , function(){
     </div>
   </form>
 </div>
+
+
 <div class="mainbody">
+	<div id="create-topic-box" style="display:none;">
+
+  <form id="create-topic-form" class="form-horizontal" onsubmit="return false">
+    <fieldset>
+      <legend>Create Topic</legend>
+      <div class="control-group">
+        <label for="username" class="control-label">Group name</label>
+        <div class="controls">
+          <input type="text" id="topic-title" name="title"/>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-actions">
+      <button type="button" id="create-topic" class="btn btn-primary">Create</button>
+    </div>
+  </form>
+
+	</div>
+
 	<div class="group-main">
 		<div class="group-topic"><div id="group-body" class="group-topic-inner">
 
@@ -112,6 +136,7 @@ window.addEventListener("load" , function(){
 	</div>
 
 </div>
+<input id="current-groupid" type="hidden" value="" >
 <footer>
 	cpoyright.....
 </footer>

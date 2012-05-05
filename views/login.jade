@@ -3,10 +3,10 @@ extends layout
 block content
 
   .row
-    .span7
+    .span6
       h1 Welcome to Chop
     .span5
-      form.form-horizontal(method='post', action='/login')
+      form#login-box.form-horizontal(method='post', action='/login')
         if(locals.message1)
           span = locals.message1
         fieldset
@@ -19,11 +19,12 @@ block content
             label.control-label(for='password') Password
             .controls
               input(type='password', name='password')
-        .form-actions
+        .form-actions()
           button.btn.btn-primary(type='submit') Sign in
-          button.btn Cancel
+          button.btn Reset
+          button.btn(type='button',onclick='showSignup()') Sign up
 
-      form.form-horizontal(method='post', action='/signup')
+      form#signup-box.form-horizontal(method='post', action='/signup',style='display:none')
         if(locals.message2)
           span = locals.message2
         fieldset
@@ -42,5 +43,16 @@ block content
               input(type='password', name='repeat-password')
         .form-actions
           button.btn.btn-primary(type='submit') Sign up
-          button.btn Cancel
+          button.btn Reset
+          button.btn(type='button',onclick='showLogin()') Sign in
 
+block scripts
+  script
+    function showSignup(){
+       $('#login-box').hide();
+       $('#signup-box').show();
+    }
+    function showLogin(){
+       $('#login-box').show();
+       $('#signup-box').hide();
+    }

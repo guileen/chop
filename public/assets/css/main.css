@@ -32,10 +32,6 @@ footer {
 	text-align : center;
 }
 
-body, div {
-	-webkit-user-select: none;
-	
-}
 
 .mainbody {
 	position: relative ;
@@ -59,6 +55,7 @@ body, div {
 	overflow-y : hidden;
 
 }
+
 .group-panel {
 	width : 220px;
 	height : 530px;
@@ -66,7 +63,6 @@ body, div {
 	background-color : #F1F1F1 ;
 	right : 20px;
 	top :0px;
-	/*float : left ;*/
 	border : 0px solid red;
 }
 
@@ -78,6 +74,7 @@ body, div {
 	top :0px;
 	border : 0px solid red;
 	background-color : #F1F1F1;
+	-webkit-user-select: none;
 }
 
 .group-aside-shadow {
@@ -103,16 +100,20 @@ body, div {
 }
 
 .group-topic .topic .topic-header{
-
-	height : 20px;
-	border-bottom : 1px solid red;
+	background-image: -webkit-linear-gradient(top, #ffffff, #dddddd);
+	font-size: 16px;
+	font-weight: bold;
+	height : 30px;
+	padding-left : 5px;
+	line-height : 30px;
+	border-bottom : 1px solid #cccccc;
 }
 .group-topic .topic .topic-body{
 
 	overflow-x : auto; 
 	overflow-y : auto; 
-	height : 410px;
-	padding:2px;
+	height : 393px;
+	padding:5px;
 }
 
 .group-topic .topic .topic-footer{
@@ -123,9 +124,9 @@ body, div {
 
 
 .sendbox {
-	top : 390px;
+	top : 449px;
 	position: absolute;
-	margin-left : 12px;
+	margin-left : 13px;
 	height : 50px;
 }
 
@@ -190,7 +191,7 @@ body, div {
 }
 
 .topic .message:nth-child(even) {
-	background-color : #eeeeee ;
+	background-color : #f6f9fc ;
 }
 
 .topic .message .sender {

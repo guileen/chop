@@ -6,7 +6,10 @@
 		Chop.msgbox=$(".msgbox textarea")[0];
 		Chop.sendbox=$(".sendbox")[0];
 
-		Chop.parseTemplate("topic", mock.topic, "#group-body");
+		var ts=mock.topic.reverse();
+		ts.forEach( function(t){
+			Chop.showNewTopic(t);
+		});
 
 		mock.message.forEach( function(m){
 			Chop.parseTemplate("message", m, "#topic-"+m.topicid+" .topic-body");
@@ -102,6 +105,14 @@
 		
 	}
 
+	Chop.showNewTopic = function(topic){
+
+		var topic= Chop.parseTemplate("topic", topic)[0];
+
+		var gbody=$("#group-body")[0];
+		gbody.insertBefore( topic, gbody.firstChild );
+
+	}
 
 
 

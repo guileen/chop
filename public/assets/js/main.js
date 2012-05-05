@@ -50,6 +50,33 @@
 		})
 	}
 
+
+	Chop.login=function(){
+
+		$.post( '/api/login',
+		   {
+		      username : "fins",
+		      password : "123123"
+		   }
+		);
+	}
+
+	Chop.signup=function(){
+		
+	}
+
+	Chop.checkUsername=function(){
+		
+	}
+
+	Chop.createGroup=function(){
+		
+	}
+
+	Chop.removeGroup=function(){
+		
+	}
+
 	Chop.sendMsg=function(msg){
 
 		alert(msg);
@@ -67,4 +94,10 @@
 
 
 
+
+
+
 }(this));
+
+
+

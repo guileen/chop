@@ -22,6 +22,24 @@
 		);
 	}
 
+	Chop.logout=function(username, password){
+
+		$.ajax( {
+				url : '/api/logout',
+				type : 'post',
+				data : {
+			     
+			   	},
+				success: function(data, textStatus, jqXHR){
+
+				},
+				error: function(jqXHR, textStatus, errorThrown){
+
+				}
+			}
+		);
+	}
+
 	Chop.signup=function(username, password){
 		$.ajax( 
 			{

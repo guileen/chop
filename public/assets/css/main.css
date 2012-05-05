@@ -6,8 +6,8 @@ body {
 }
 
 header {
-	background-color : black;
-	color : white ;
+	background-color : #333333;
+	color : #f0f0f0 ;
 	padding : 5px;
 }
 
@@ -32,6 +32,11 @@ footer {
 	text-align : center;
 }
 
+body, div {
+	-webkit-user-select: none;
+	
+}
+
 .mainbody {
 	position: relative ;
 	min-width : 800px;
@@ -40,18 +45,51 @@ footer {
 
 }
 
+.group-main {
+	padding-right : 201px;
+}
 .group-topic {
 	position: relative ;
+
 	width : 100%;
-	qmin-height : 500px;
+	margin-right : 200px;
 	
 	overflow-x : scroll ;
 	overflow-y : hidden;
 
+
+
 }
+.group-panel {
+	position: absolute;
+	background-color : #F1F1F1 ;
+	right : 20px;
+	top :0px;
+	/*float : left ;*/
+	border : 0px solid red;
+	width : 180px;
+	height : 480px;
+}
+
+.group-tool {
+	position: absolute;
+	right : 0px;
+	top :0px;
+	border : 0px solid red;
+	background-color : #F1F1F1;
+	width : 20px;
+	height : 480px;
+}
+
+.group-aside-shadow {
+	-webkit-box-shadow: -5px 0px 5px rgba(0,0,0,0.3);
+}
+
 .group-topic-inner {
 	white-space:nowrap;
 	width : 2000px;
+
+
 }
 
 .group-topic .topic {
@@ -99,15 +137,41 @@ footer {
 }
 
 .msgbox textarea {
-	height : 42px;
-	width : 185px;
-}
-}
-
-.sendbutton button {
-	height : 42px;
+	height : 39px;
+	width : 280px;
+	/*border : 1px solid #dddddd;*/
+	resize : none;
 }
 
+
+.sendbutton .core-button span {
+	height : 40px;
+	width : 40px;
+	line-height: 36px;
+}
+
+.core-button:hover{
+	-webkit-box-shadow:inset 0px 0px 4px #ffffff;
+}
+
+.core-button:active{
+	-webkit-box-shadow:inset 0px 0px 6px #333333;
+}
+
+.core-button {
+	margin : 1px;
+	border: 1px solid #3079ED;
+	background-color: #4D90FE;
+	background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+	background-image: linear-gradient(top,#4D90FE,#4787ED);
+	color: white !important;
+}
+
+.core-button span {
+	display :block;
+	font-weight: bold;
+	text-align: center;
+}
 
 
 .group-bar {
@@ -144,4 +208,6 @@ footer {
 	clear : both;
 	
 }
+
+
 

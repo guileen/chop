@@ -24,7 +24,7 @@
 
 
 		$(".msgbox textarea").on("keypress", function(e){
-			if (e.keyCode==13){
+			if (!e.ctrlKey && e.keyCode==13){
 				e.preventDefault();
 				Chop.sendMsg( Chop.msgbox.value);
 			}
@@ -34,6 +34,42 @@
 		$(".sendbutton button").on("click", function(e){
 			Chop.sendMsg( Chop.msgbox.value );
 		});
+
+		var groupMainDom=$(".group-main")[0];
+		var groupPanel=$(".group-panel");
+		var groupTool=$(".group-tool");
+
+		var showPanel=true;
+		$("#trigger-button").on("click",function(e){
+			// alert(1)
+			if (showPanel){
+
+				groupPanel.hide();
+				groupPanel.removeClass("group-aside-shadow");
+				groupTool.addClass("group-aside-shadow");
+
+				var width=groupMainDom.style.width;
+				groupMainDom.style.paddingRight = "20px";
+				groupMainDom.style.width="1000px";
+				setTimeout(function(){
+					groupMainDom.style.width=width;
+				},0)
+				showPanel=false;
+			}else{
+				groupPanel.show();
+				groupTool.removeClass("group-aside-shadow");
+				groupPanel.addClass("group-aside-shadow");
+
+				var width=groupMainDom.style.width;
+				groupMainDom.style.paddingRight = "200px";
+				groupMainDom.style.width="1000px";
+				setTimeout(function(){
+					groupMainDom.style.width=width;
+				},0)
+				showPanel=true;
+			}
+
+		})
 
 		groupTopic=$('.group-topic');
 	}

@@ -6,7 +6,7 @@ var exports = module.exports = {
   , port: 6379
   }
 , uploadRoot : 'http://dev:3000/upload/'
-, uploadFolder : 'public/upload/'
+, uploadFolder : __dirname + '/public/upload/'
 , tmpUploadFolder : '/tmp/upload/'
 , botTimeout : 3000
 , marklet_loader_js : 'http://dev:3000/marklet/loader.min.js'

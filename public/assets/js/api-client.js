@@ -139,7 +139,6 @@
 	};
 
 	Chop.createTopics=function(title,groupid){
-		alert([title,groupid])
 		$.ajax( 
 			{
 				url : '/api/group/newtopic',
@@ -149,7 +148,7 @@
 			      groupid : groupid
 			   	},
 				success: function(data, textStatus, jqXHR){
-					
+					Chop.showNewTopic(data.data);
 				},
 				error: function(jqXHR, textStatus, errorThrown){
 

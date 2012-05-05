@@ -20,6 +20,10 @@ var exports = module.exports = function(app) {
       })
   })
 
+  app.get('/login', function(req, res, next) {
+      res.render('login', {})
+  })
+
   app.post('/login', function(req, res, next) {
       req.session.username = req.body.username
       res.redirect('/');

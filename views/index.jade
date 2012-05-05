@@ -2,18 +2,8 @@ extend layout
 
 block content
   .row
-    for id in [0, 1]
-      .span6
-        i(class='imgpk-pos-#{id}')
-        .row
-          for i in [0, 1, 2]
-            .span2
-              i.winsert-pos
-              .row
-                .span1
-                  i.insert-pos
-                .span1
-                  i.insert-pos
+    .span6
+    .span6
 
 block scripts
   script#pk-image(type='template')

@@ -15,6 +15,9 @@
   // send command
   ;['sub', 'unsub', 'leave', 'enter', 'msg'].forEach(function(cmd) {
       Chop.io[cmd] = function(data) {
+        console.log('client request io');
+        console.log(cmd)
+        console.log(data)
         socket.emit('message', [cmd, data]);
       }
   });

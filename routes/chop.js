@@ -33,6 +33,7 @@ var exports = module.exports = function(app) {
   io.sockets.on('connection', function(socket){
       var handler = new Handler(socket);
       socket.on('message', function(data){
+          console.log('message');
           console.log(data);
           handler[data[0]](data[1]);
       });
@@ -105,8 +106,10 @@ Handler.prototype = {
   }
 
 , enter: function(groupid) {
+    console.log('enter %s', groupid);
+    console.log(this.username)
     var channel = getGroupChannel(groupid);
-    channel.broadcast(['enter'], this.username);
+    channel.broadcast(['enter', this.username]);
     channel.sub(this.socket);
     this.channels.push(channel);
     service.userAddToGroup(groupid, this.username)

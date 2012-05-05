@@ -1,3 +1,5 @@
+var chop = require('./chop');
+
 var exports = module.exports = function(app) {
 
   var redis = require('redis').createClient()
@@ -56,7 +58,9 @@ var exports = module.exports = function(app) {
   });
 
   app.post('/api/sendmsg', requireLogin, function(req, res, next) {
-      // TODO
+      var message = req.body;
+      service.newMessage(message, myconsole.ifError);
+      chop.getTopicChannel(message.topicid).broadcast(message);
   })
 
   app.post('/api/signup', /* userform , */ function(req, res, next) {
@@ -88,17 +92,22 @@ var exports = module.exports = function(app) {
       // TODO
   })
 
-  app.post('/api/group/hot_topics', requireLogin, function(req, res, next) {
+  app.post('/api/group/hottopics', requireLogin, function(req, res, next) {
       var groupid = req.body.groupid;
       service.getHotTopics(groupid, sendjson(res))
   })
 
-  app.post('/api/group/my_topics', requireLogin, function(req, res, next) {
+  app.post('/api/group/mytopics', requireLogin, function(req, res, next) {
       
   })
 
-  app.post('/api/group/joined_topics', requireLogin, function(req, res, next) {
+  app.post('/api/group/joinedtopics', requireLogin, function(req, res, next) {
       
+  })
+
+  app.post('/api/group/newtopic', requireLogin, function(req, res, next) {
+      var topic = req.body;
+      service.createTopic(topic, sendjson(res, 403));
   })
 
   app.post('/api/group/timeline', requireLogin, function(req, res, next) {

@@ -65,7 +65,7 @@ var exports = module.exports = function(app) {
       var message = req.body;
       // TODO markdown
       console.log(message);
-      service.newMessage(message, myconsole.ifError);
+      service.newMessage(message, sendjson(res));
       chop.getTopicChannel(message.topicid).broadcast(message);
   })
 

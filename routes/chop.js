@@ -148,7 +148,9 @@ function Channel(key) {
 Channel.prototype = {
 
   sub: function(socket) {
-    this.clients.push(socket);
+    if(this.clients.indexOf(socket) < 0) {
+      this.clients.push(socket);
+    }
   }
 
 , unsub: function(socket) {

@@ -73,6 +73,7 @@ var exports = module.exports = function(app) {
           if(err) {return next(err);}
           message.datetime = share.simpleDate(new Date());
           chop.getTopicChannel(message.topicid).broadcast(message);
+          res.end();
       });
   })
 

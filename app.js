@@ -86,6 +86,7 @@ app.use(function(err, req, res, next) {
 
 require('./routes')(app);
 require('./routes/api')(app);
+require('./routes/chop')(app);
 
 app.listen(PORT);
 console.log("Express server listening on port %d in %s mode", PORT /* app.address().port */, app.settings.env);

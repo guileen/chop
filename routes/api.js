@@ -1,4 +1,6 @@
-var chop = require('./chop');
+var chop = require('./chop')
+  , share = require('../lib/share')
+  ;
 
 var exports = module.exports = function(app) {
 
@@ -65,8 +67,13 @@ var exports = module.exports = function(app) {
       var message = req.body;
       // TODO markdown
       console.log(message);
-      service.newMessage(message, sendjson(res));
-      chop.getTopicChannel(message.topicid).broadcast(message);
+      message.sender = req.session.username;
+      message.date = Date.now();
+      service.newMessage(message, function(err, data) {
+          if(err) {return next(err);}
+          message.datetime = share.simpleDate(new Date());
+          chop.getTopicChannel(message.topicid).broadcast(message);
+      });
   })
 
   app.post('/api/signup', /* userform , */ function(req, res, next) {

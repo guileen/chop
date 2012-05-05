@@ -64,7 +64,7 @@ window.addEventListener("load" , function(){
 
 </div>
 
-<div class="create-group-body">
+<div class="create-group-body" style="display:none;">
   <form class="form-horizontal" method="POST" action="/group/create">
     <fieldset>
       <legend>Create Group</legend>
@@ -82,7 +82,8 @@ window.addEventListener("load" , function(){
       </div>
     </fieldset>
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary">Create group</button>
+      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="button" class="btn" onclick="Chop.showHome();">Back</button>
     </div>
   </form>
 </div>
@@ -128,12 +129,12 @@ window.addEventListener("load" , function(){
 		</div>
 	</div>
 	<div class="group-tool">
-		<div id="trigger-button">&gt;&gt;</div>
+		<div id="trigger-button"><img src="/assets/img/splitter.png"></div>
 	</div>
 
 
 	<div class="group-bar">
-		asdasd
+		Timeline : Coming soon...
 	</div>
 
 </div>

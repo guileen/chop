@@ -40,7 +40,7 @@ nav a {
 	position: relative ;
 	min-width : 800px;
 	min-height: 560px;
-	border : 1px solid red;
+	border : 0px solid red;
 
 }
 
@@ -71,7 +71,7 @@ nav a {
 	position: relative ;
 	min-width : 800px;
 	min-height: 560px;
-	border : 1px solid red;
+	border : 0px solid red;
 
 }
 
@@ -110,6 +110,15 @@ nav a {
 	background-color : #F1F1F1;
 	-webkit-user-select: none;
 }
+
+
+#trigger-button {
+	font-size : 9px;
+	margin-top : 250px;
+	text-align : center;
+
+}
+
 
 .group-aside-shadow {
 	-webkit-box-shadow: -5px 0px 5px rgba(0,0,0,0.3);
@@ -209,13 +218,14 @@ nav a {
 
 .group-bar {
 	position: absolute;
+	padding : 2px;
 	display : block;
 	z-index : 99;
 	width : 100%;
 	left : 0px;
 	bottom : 0px;
 	height : 30px;
-	background-color : #ffe0d6;
+	background-color : #d9e6f3;
 }
 
 
@@ -249,6 +259,7 @@ nav a {
 	padding-right : 2px;
 	
 }
+
 
 
 #create-topic-box {

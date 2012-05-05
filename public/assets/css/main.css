@@ -32,6 +32,10 @@ footer {
 	text-align : center;
 }
 
+nav a {
+	background : transparent !important; 
+	margin : 0px 5px !important; 
+}
 .homebody {
 	position: relative ;
 	min-width : 800px;

@@ -229,11 +229,11 @@
 			      text : text
 			   	},
 				success: function(data, textStatus, jqXHR){
-          console.log(data)
+		          console.log(data)
 					Chop.clearMsg();
 				},
 				error: function(jqXHR, textStatus, errorThrown){
-
+					 console.log([textStatus,errorThrown])
 				}
 			}
 		);

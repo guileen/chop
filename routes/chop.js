@@ -1,6 +1,31 @@
+  var Session = require('connect').middleware.session.Session;
+
 module.exports = function(app) {
   var io = require('socket.io').listen(app);
   var service = require('../lib');
+
+
+  io.set('authorization', function (data, accept) {
+      if (data.headers.cookie) {
+        data.cookie = parseCookie(data.headers.cookie);
+        data.sessionID = data.cookie['express.sid'];
+        // save the session store to the data object
+        // (as required by the Session constructor)
+        data.sessionStore = app.sessionStore;
+        sessionStore.get(data.sessionID, function (err, session) {
+            if (err || !session) {
+              accept('Error', false);
+            } else {
+              // create a session object, passing data as request and our
+              // just acquired session data
+              data.session = new Session(data, session);
+              accept(null, true);
+            }
+        });
+      } else {
+        return accept('No cookie transmitted.', false);
+      }
+  });
 
   io.sockets.on('connection', function(socket){
       var handler = new Handler(socket);
@@ -27,6 +52,9 @@ function removeFromArr(arr, elem) {
 
 function Handler(socket) {
   this.socket = socket;
+  console.log('A socket with sessionID ' + socket.handshake.sessionID 
+        + ' connected!');
+  console.log(socket)
   var session = socket.request.session;
   // TODO ...
   console.log(session);

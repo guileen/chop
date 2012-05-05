@@ -6,7 +6,9 @@ block content
     .span7
       h1 Welcome to Chop
     .span5
-      form.form-horizontal
+      form.form-horizontal(method='post', action='/login')
+        if(locals.message1)
+          span = locals.message1
         fieldset
           legend Login
           .control-group
@@ -21,7 +23,9 @@ block content
           button.btn.btn-primary(type='submit') Sign in
           button.btn Cancel
 
-      form.form-horizontal
+      form.form-horizontal(method='post', action='/signup')
+        if(locals.message2)
+          span = locals.message2
         fieldset
           legend Sign up
           .control-group

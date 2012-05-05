@@ -38,6 +38,8 @@ app.configure('development', function() {
     // require('./automake');
 });
 
+app.sessionStore = new RedisStore;
+
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');

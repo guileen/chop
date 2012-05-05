@@ -59,6 +59,20 @@
 		);
 	}
 
+  Chop.profile = function() {
+    $.ajax({
+        url: '/api/profile',
+        type: 'post',
+        success: function(data, textStatus, jqXHR) {
+          console.log(data)
+          $('a.userid').html(data.username);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          location.href= '/login'
+        }
+    });
+  }
+
 	Chop.checkUsername=function(){
 		
 	}

@@ -3,6 +3,10 @@
 	var Chop=scope.Chop=scope.Chop||{};
 
 	Chop.init = function(){
+
+    // update profile
+    Chop.profile();
+
 		Chop.msgbox=$(".msgbox textarea")[0];
 		Chop.sendbox=$(".sendbox")[0];
 

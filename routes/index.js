@@ -9,11 +9,21 @@ var exports = module.exports = function(app) {
     , service = require('../lib')
     ;
 
-  app.get('/pop', function(req, res, next) {
-      res.redirect('/mark');
-  })
+  function requireLogin(req, res, next) {
+    // --- for test
+    if(req.query.test_user) {
+      req.session.username = req.query.test_user;
+      return next();
+    }
+    // --- end test
+    if(!req.session.username) {
+      return res.redirect('/login.html');
+    }
 
-  app.get('/', function(req, res, next) {
+    next();
+  }
+
+  app.get('/', requireLogin, function(req, res, next) {
       res.redirect('/index.html');
       // res.render('index', {
       //     pageid: 'index'
@@ -25,9 +35,33 @@ var exports = module.exports = function(app) {
   })
 
   app.post('/login', function(req, res, next) {
-      req.session.username = req.body.username
-      res.redirect('/');
+      service.checkUserAuth(req.body.username, req.body.password, function(err, ok) {
+          if(err) {return next(err);}
+          if(ok) {
+            req.session.username = req.body.username
+            res.redirect('/');
+          } else {
+            res.render('login', {
+                message1: 'Wrong username or password'
+            });
+          }
+      })
   });
+
+  app.post('/signup', function(req, res, next) {
+      var user = req.body;
+      if(user.password != user['repeat-password']) {
+        res.render('login', {
+            message2: 'password is not match'
+        })
+      }
+      delete user['repeat-password'];
+      service.createUser(user, function(err, data) {
+          if(err) {return next(err);}
+          req.session.username = user.username;
+          res.redirect('/');
+      })
+  })
 
   app.post('/upload', function(req, res, next) {
       var user = req.session.username

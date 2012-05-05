@@ -57,6 +57,10 @@ var exports = module.exports = function(app) {
       });
   });
 
+  app.post('/api/profile', requireLogin, function(req, res, next) {
+      res.json({username: req.session.username});
+  })
+
   app.post('/api/sendmsg', requireLogin, function(req, res, next) {
       var message = req.body;
       service.newMessage(message, myconsole.ifError);

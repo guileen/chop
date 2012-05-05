@@ -4,7 +4,7 @@
   var socket = null;
 
   Chop.connect = function(){
-    socket = Chop.socket = io.connect('http://localhost:3000');
+    socket = Chop.socket = io.connect('');
     socket.on('message', function (data) {
         listeners[data[0]](data[1]);
     });

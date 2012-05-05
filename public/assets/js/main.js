@@ -140,12 +140,14 @@
 	}
 
 	Chop.showNewTopic = function(topic){
+    if(topic.id == null) throw new Error('topicid is required');
 
-		var topic= Chop.parseTemplate("topic", topic)[0];
+		var $topic= Chop.parseTemplate("topic", topic)[0];
 
 		var gbody=$("#group-body")[0];
-		gbody.insertBefore( topic, gbody.firstChild );
+		gbody.insertBefore( $topic, gbody.firstChild );
 
+    Chop.io.sub(topic.id);
   }
 
 

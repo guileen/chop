@@ -33,6 +33,7 @@ var exports = module.exports = function(app) {
   io.sockets.on('connection', function(socket){
       var handler = new Handler(socket);
       socket.on('message', function(data){
+          console.log(data);
           handler[data[0]](data[1]);
       });
 
@@ -155,6 +156,8 @@ Channel.prototype = {
   }
 
 , broadcast: function(message) {
+    console.log('broadcast message %j', message);
+    console.log('clients %d', this.clients.length);
     this.clients.forEach(function(client) {
         client.emit('message', ['msg', message]);
     });

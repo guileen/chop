@@ -17,8 +17,7 @@
   ;['sub', 'unsub', 'leave', 'enter', 'msg'].forEach(function(cmd) {
       Chop.io[cmd] = function(data) {
         console.log('client request io');
-        console.log(cmd)
-        console.log(data)
+        console.log(cmd, data)
         socket.emit('message', [cmd, data]);
       }
   });
@@ -27,8 +26,6 @@
   var listeners = {
 
     msg: function(data) {
-      console.log(data);
-
       Chop.showMessage(data);
 
     }

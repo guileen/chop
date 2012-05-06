@@ -22,7 +22,7 @@
 			]).join(""),
 
 		userlist : ([
-				'<div class="list-item" >${username}</div> \
+				'<div class="list-item" id="user-${username}">${username}</div> \
 				'
 			]).join(""),
 

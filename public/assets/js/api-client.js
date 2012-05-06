@@ -131,7 +131,6 @@
          			 var msgs = data.data;
           // TODO only top 4 topics
 			           msgs.forEach(function(m){
-			           	console.log(m)
 			              Chop.showMessage(m);			              
 			          })
 				},
@@ -230,22 +229,25 @@
 	};
 
 	Chop.getGroupUsers=function(groupid){
+		setTimeout(function(){
+			$.ajax( 
+				{
+					url : '/api/group/users',
+					type : 'post',
+					data : {
+				      groupid : groupid
+				   	},
+					success: function(data, textStatus, jqXHR){
+						Chop.showUserlist(data.data);
+					},
+					error: function(jqXHR, textStatus, errorThrown){
 
-		$.ajax( 
-			{
-				url : '/api/group/users',
-				type : 'post',
-				data : {
-			      groupid : groupid
-			   	},
-				success: function(data, textStatus, jqXHR){
-					Chop.showUserlist(data.data);
-				},
-				error: function(jqXHR, textStatus, errorThrown){
-
+					}
 				}
-			}
-		);		
+			);	
+
+		},500);
+	
 	};
 
 	Chop.sendMsg=function(text,topicid){
@@ -261,7 +263,6 @@
 			      text : text
 			   	},
 				success: function(data, textStatus, jqXHR){
-		          console.log(data)
 					Chop.clearMsg();
 				},
 				error: function(jqXHR, textStatus, errorThrown){

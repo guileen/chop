@@ -155,7 +155,17 @@
   }
 
   Chop.showUserlist=function(users){
-  	var $topic= Chop.parseTemplate("userlist", users, '#userlist');
+  	users.forEach(function(user){
+  		if (user){
+    		var id="user-"+user.username;
+	  		if ($('#'+id)[0]){
+	  			return;
+	  		}
+  			var $topic= Chop.parseTemplate("userlist", user, '#userlist');
+			
+  		}
+  		
+  	})
   }
 
   Chop.showNewGroup = function(group) {

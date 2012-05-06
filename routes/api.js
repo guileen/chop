@@ -126,8 +126,11 @@ var exports = module.exports = function(app) {
   app.post('/api/group/newtopic', requireLogin, function(req, res, next) {
       var topic = req.body;
       topic.creater = req.session.username;
-      service.createTopic(topic, sendjson(res, 403));
-      chop.getGroupChannel(topic.groupid).broadcast(['topic', topic])
+      service.createTopic(topic, function(err, topic) {
+          if(err) {return next(err);}
+          sendjson(res)(err, topic);
+          chop.getGroupChannel(topic.groupid).broadcast(['topic', topic])
+      });
   })
 
   app.post('/api/group/timeline', requireLogin, function(req, res, next) {

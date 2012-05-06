@@ -61,7 +61,7 @@
 			groupPanel.removeClass("group-aside-shadow");
 			groupTool.addClass("group-aside-shadow");
 
-			groupMainDom.style.paddingRight = "20px";
+			groupMainDom.style.paddingRight = "25px";
 			groupMainDom.style.marginRight="1px"
 			setTimeout(function(){
 				groupMainDom.style.marginRight="0px";
@@ -74,7 +74,7 @@
 			groupPanel.addClass("group-aside-shadow");
 
 			var height=groupMainDom.style.height;
-			groupMainDom.style.paddingRight = "200px";
+			groupMainDom.style.paddingRight = "245px";
 			groupMainDom.style.marginRight="1px"
 			setTimeout(function(){
 				groupMainDom.style.marginRight="0px";

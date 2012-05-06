@@ -36,7 +36,8 @@
     // newtopic
   , topic: function(data) {
       console.log('topic:');
-      console.log(data);
+      
+      Chop.showNewTopic(data);
     }
 
   , enter: function(data) {

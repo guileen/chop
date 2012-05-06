@@ -40,7 +40,11 @@
 
   , enter: function(data) {
       console.log('enter:');
-      console.log(data);
+      var user={
+        username : data[1]
+
+      }
+      Chop.showUserlist([user])
     }
 
   , leave: function(data) {

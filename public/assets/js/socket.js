@@ -43,7 +43,7 @@
   , enter: function(data) {
       console.log('enter:');
       var user={
-        username : data[1]
+        username : data
 
       }
       Chop.showUserlist([user])

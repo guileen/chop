@@ -180,6 +180,7 @@
 			   	},
 				success: function(data, textStatus, jqXHR){
 					//Chop.showNewTopic(data.data);
+					$("#topic-title").val("");
 					$("#create-topic-box").hide();
 				},
 				error: function(jqXHR, textStatus, errorThrown){

@@ -139,7 +139,8 @@ var exports = module.exports = function(app) {
   });
 
   app.get('/api/topic/history', requireLogin, function(req, res, next) {
-      //TODO
+      var topicid = req.query.topicid;
+      service.getTopicHistory(topicid, sendjson(res));
   })
 
 }

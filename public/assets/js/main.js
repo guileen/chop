@@ -103,14 +103,15 @@
 
 	    $('a.createtopic').click(function(){
 	       $("#create-topic-box").show();
+	       $("#topic-title").focus();
 	    })
 
-	    $('#create-topic').click(function(){
-
+	    Chop.ct=function(){
 	    	var title=$("#topic-title").val();
 	    	var groupid=$("#current-groupid").val();
 	    	Chop.createTopics(title, groupid)
-	    })
+	    }
+
 
 	    $('#cancel-topic-box').click(function(){
 	    	$("#create-topic-box").hide();

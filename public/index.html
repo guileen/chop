@@ -92,7 +92,7 @@ window.addEventListener("load" , function(){
 <div class="mainbody">
 	<div id="create-topic-box" style="display:none;">
 
-  <form id="create-topic-form" class="form-horizontal" onsubmit="return false">
+  <form id="create-topic-form" class="form-horizontal" onsubmit=" Chop.ct();return false">
     <fieldset>
       <legend>Create Topic</legend>
       <div class="control-group">
@@ -103,7 +103,7 @@ window.addEventListener("load" , function(){
       </div>
     </fieldset>
     <div class="form-actions">
-      <button type="button" id="create-topic" class="btn btn-primary">Create</button>
+      <button type="submit" id="create-topic" class="btn btn-primary">Create</button>
       <button type="button" id="cancel-topic-box" class="btn">Cancel</button>
     </div>
   </form>

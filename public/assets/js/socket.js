@@ -6,6 +6,7 @@
   Chop.connect = function(){
     socket = Chop.socket = io.connect('');
     socket.on('message', function (data) {
+        console.log(data);
         listeners[data[0]](data[1]);
     });
   }

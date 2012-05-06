@@ -72,7 +72,7 @@ var exports = module.exports = function(app) {
       service.newMessage(message, function(err, data) {
           if(err) {return next(err);}
           message.datetime = share.simpleDate(new Date());
-          chop.getTopicChannel(message.topicid).broadcast(message);
+          chop.getTopicChannel(message.topicid).broadcast(['msg', message]);
           res.end();
       });
   })
@@ -127,6 +127,7 @@ var exports = module.exports = function(app) {
       var topic = req.body;
       topic.creater = req.session.username;
       service.createTopic(topic, sendjson(res, 403));
+      chop.getGroupChannel(topic.groupid).broadcast(['topic', topic])
   })
 
   app.post('/api/group/timeline', requireLogin, function(req, res, next) {

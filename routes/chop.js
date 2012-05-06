@@ -162,11 +162,10 @@ Channel.prototype = {
     removeFromArr(this.clients, socket);
   }
 
-, broadcast: function(message) {
-    console.log('broadcast message %j', message);
+, broadcast: function(data) {
     console.log('clients %d', this.clients.length);
     this.clients.forEach(function(client) {
-        client.emit('message', ['msg', message]);
+        client.emit('message', data);
     });
   }
 

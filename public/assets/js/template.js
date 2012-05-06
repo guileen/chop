@@ -30,7 +30,7 @@
 				'<div class="message">	\
 					<span class="sender" id="user-${userid}">${sender}</span>	\
 					<div class="sendtime">${datetime}</div>	\
-					<div class="text">${text}</div>	\
+					<div class="text"></div>	\
 				</div>'
 			]).join(""),
 

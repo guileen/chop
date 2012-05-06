@@ -78,6 +78,8 @@
       var domId="#topic-"+topicid;
       if ($(domId)[0]){
            var message= Chop.parseTemplate("message", msg,$(domId+" .topic-body"));
+           message.find('.text').html(msg.html);
+           $(domId+" .topic-body")[0].scrollTop=10000;
       }
 	}
 

@@ -21,6 +21,11 @@
 				</div>'
 			]).join(""),
 
+		userlist : ([
+				'<div class="list-item" >${username}</div> \
+				'
+			]).join(""),
+
 		message : ([
 				'<div class="message">	\
 					<span class="sender" id="user-${userid}">${sender}</span>	\

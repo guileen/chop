@@ -121,11 +121,13 @@
 
 	var groupTopic;
 	Chop.activeBox=function(topicid){
+
 		var topic=$('#'+topicid);
 		var pos=topic.position();
 		var scrollLeft=groupTopic.scrollLeft();
 		$(".sendbox").show();
 		currentTopic=topicid.substring(6);
+		// alert(pos.left+scrollLeft)
 		Chop.sendbox.css({
 			left : (pos.left+scrollLeft)+"px"
 		})
@@ -151,6 +153,9 @@
     Chop.io.sub(topic.id);
   }
 
+  Chop.showUserlist=function(users){
+  	var $topic= Chop.parseTemplate("userlist", users, '#userlist');
+  }
 
   Chop.showNewGroup = function(group) {
     var $group = Chop.parseTemplate('group', group);

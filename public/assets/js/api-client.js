@@ -73,8 +73,12 @@
     });
   }
 
-	Chop.checkUsername=function(){
-		
+	Chop.showMessage=function(msg){
+		      var topicid=msg.topicid;
+      var domId="#topic-"+topicid;
+      if ($(domId)[0]){
+           var message= Chop.parseTemplate("message", msg,$(domId+" .topic-body"));
+      }
 	}
 
 	Chop.createGroup=function(name, tags){
@@ -115,6 +119,30 @@
     })
   }
 
+  Chop.getHistoryTopic=function(topicid){
+		$.ajax( 
+			{
+				url : '/api/topic/history',
+				type : 'get',
+				data : {
+			      topicid : topicid
+			   	},
+				success: function(data, textStatus, jqXHR){
+         			 var msgs = data.data;
+          // TODO only top 4 topics
+			           msgs.forEach(function(m){
+			           	console.log(m)
+			              Chop.showMessage(m);			              
+			          })
+				},
+				error: function(jqXHR, textStatus, errorThrown){
+
+				}
+			}
+		);		  	
+
+  }
+
 	Chop.getHotTopics=function(groupid){
 
 		$.ajax( 
@@ -127,8 +155,11 @@
 				success: function(data, textStatus, jqXHR){
           var topics = data.data;
           // TODO only top 4 topics
+          $('.group-topic-inner div.topic').remove();
           topics.forEach(function(topic){
               Chop.showNewTopic(topic);
+
+              Chop.getHistoryTopic(topic.id);
           })
 				},
 				error: function(jqXHR, textStatus, errorThrown){
@@ -207,7 +238,7 @@
 			      groupid : groupid
 			   	},
 				success: function(data, textStatus, jqXHR){
-					console.log(data)
+					Chop.showUserlist(data.data);
 				},
 				error: function(jqXHR, textStatus, errorThrown){
 
